@@ -1,0 +1,2 @@
+# FullStackWebApp-Store
+This is my Per Scholas' capstone full-stack web application project. This project will focus on creating both back-end and front end of ecommerce website. This project will utilize Front end technology such as react js, bootstrap react, HTML5 and CSS3/SASS and back-end technologies such as Spring boot, Spring MVC, JAVA and MySQL. Feel free to leave the comment or question. 
