@@ -1,0 +1,19 @@
+.product-title{
+    width:14vw;
+    grid-area:title;
+    font-size:1em;
+}
+.product-img{
+    grid-area:img;
+    height:15vh;
+    width:8vw;
+}
+.product-price{
+    grid-area:price;
+}
+.product-price{
+    display:flex;
+}
+.product-description{
+    font-size:12px;
+}

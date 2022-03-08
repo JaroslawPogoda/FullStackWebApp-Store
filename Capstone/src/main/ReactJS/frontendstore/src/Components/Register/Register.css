@@ -1,0 +1,25 @@
+/* email: "",
+    userName: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    city: "",
+    street: "",
+    number: "",
+    zipcode: "",
+    phone: "",
+    password_confirmation: "", */
+.Register{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+.RegisterForm{
+    display:flex;
+    flex-direction:column;
+    
+}
+input{
+    margin-bottom:1vh;
+}

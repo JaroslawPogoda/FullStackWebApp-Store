@@ -1,0 +1,24 @@
+.Categories ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    background-color: #f1f1ff;
+}
+
+.Categories .Categories-ul .Category-li{
+    display: block;
+    padding: 8px 16px;
+    color: #000;
+    text-decoration: none;
+    }
+    
+.Categories .Categories-ul .Category-li.active{
+    background-color: #4CAF50;
+    color: white;
+    }
+    
+.Categories .Categories-ul .Category-li:hover:not(.active) {
+    background-color: #555;
+    color: white;
+    }

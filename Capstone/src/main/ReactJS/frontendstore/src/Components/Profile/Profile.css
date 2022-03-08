@@ -1,0 +1,13 @@
+.profile{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    
+    height: 70vh;
+}
+.profile-items{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}

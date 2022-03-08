@@ -1,0 +1,8 @@
+.md-shopping-cart{
+    
+    height:35px;
+    width: 35px;
+}
+.md-shopping-cart:hover{
+    color: rgb(109, 46, 255);
+}
