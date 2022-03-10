@@ -6,6 +6,7 @@ import {useAuth0} from '@auth0/auth0-react'
 import './Profile.css'
 import {GrDocumentUpdate} from 'react-icons/gr'
 import UserService from '../../Service/UserService';
+import {TiUserDelete} from 'react-icons/ti'
 
 //end of imports
 //definition of Profile Complonent
@@ -30,10 +31,16 @@ function Profile() {
       event.preventDefault()
       
     }
+    const handleDelete=(event)=>{
+      UserService.deleteUser(user.email)
+      value.setUser({})
+      setUser({})
+    }
     //return
   return <div className="profile">
     {value.user.name?<>
       <GrDocumentUpdate className="profile-update" onClick={()=>setUpdate(!update)}/>
+      <TiUserDelete className="profile-delete" onClick={handleDelete}/>
     {update?<form className="UpdateUserForm" onSubmit={handleSubmit}>
     <label htmlFor='picture'>picture:</label>
         <input

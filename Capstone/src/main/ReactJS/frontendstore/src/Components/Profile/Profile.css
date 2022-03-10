@@ -32,3 +32,17 @@
     right: 90px;
     transition: all 0.25s
 }
+.profile-delete{
+    position:absolute;
+    top: 300px;
+    transform: scale(1.9);
+    right: 130px;
+    transition: all 0.25s
+}
+.profile-delete:hover{
+    position:absolute;
+    top: 300px;
+    transform: scale(2.2);
+    right: 130px;
+    transition: all 0.25s
+}

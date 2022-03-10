@@ -1,9 +1,11 @@
 //Objective render product to Cart
 //import
-import React from "react";
+import React,{useContext} from "react";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
+import { UserContext } from "../../Layout";
 //end imports
 function CartProduct(props) {
+  const valueUser = useContext(UserContext);
   //change quantity of product in cart
   const handleChangeQuantity = (event) => {
     props.dispatchCart({
