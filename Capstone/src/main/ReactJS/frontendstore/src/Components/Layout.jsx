@@ -4,7 +4,7 @@ import React,{useState,useEffect,useReducer,createContext} from "react";
 import {  Route, Routes } from "react-router-dom";
 import Products from "./Products/Products";
 import getDataAllProducts from '../functions/getDataAllProducts'
-import getDataAllCategory from "../functions/getDataAllCategory";
+
 import Header from "./Header/Header"
 import Footer from "./Footer/Footer";
 import Register from "./Register/Register";
@@ -33,10 +33,17 @@ export default function Layout(props) {
   const [categories, setAllCategory] = useState([])
   //intialization of cart and 
   const [cart,dispatchCart]=useReducer(cartReducer,{products:[],userToken:null});
-  
+  const filterout=(id)=>{
+    console.log(id)
+    setAllProducts(allProducts.filter(product=>product.id!=id
+      ))
+  }
+  const refreshProduct=()=>{
+    getDataAllProducts(setAllProducts)
+  }
   useEffect(() => {
     getDataAllProducts(setAllProducts);
-    getDataAllCategory(setAllCategory);
+   
     //getDataAllProductShopAPI(setAllProducts)
     // createUser()
     // getUser()
@@ -52,13 +59,14 @@ export default function Layout(props) {
       <Header />
       <div className="body-parts">
       <Routes>
-        <Route path={""} element={<Products allProducts={allProducts} />} />
-        <Route path={"products"} element={<Products allProducts={allProducts} />} />
+        <Route path={""} element={<Products allProducts={allProducts} setAllProducts={setAllProducts} filterout={filterout} refreshProduct={refreshProduct}/>} />
+        <Route path={"products"} element={<Products allProducts={allProducts} setAllProducts={setAllProducts} filterout={filterout} refreshProduct={refreshProduct}/>} />
         <Route path={"register"} element={<Register/>}/>
         <Route path={"login"} element={<Login/>}/>
         <Route path={"checkout"} element={<Checkout/>}/>
         <Route path={"profile"} element={<Profile />}/>
-        <Route path={"addproduct"} element={<Addproduct />}/>
+        <Route path={"/addproduct"} element={<Addproduct refreshProduct={refreshProduct}/>}/>
+        <Route path={"products/addproduct"} element={<Addproduct refreshProduct={refreshProduct}/>}/>
         <Route path={'*'} element={<Error />}/>
 
       </Routes>

@@ -1,17 +1,16 @@
 import React, { useState,useEffect, useContext } from "react";
 import { UserContext } from "../Layout";
-import signIn from "../../functions/signIn";
 import { CartStateContext } from "../Layout";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginAuth0Button from "./LoginAuth0Button/LoginAuth0Button";
-import LogoutAuth0Button from "./LogoutAuth0Button/LogoutAuth0Button";
 import './Login.css'
+import UserService from "../../Service/UserService";
 export default function Register() {
   const value = useContext(CartStateContext);
   const valueUser = useContext(UserContext);
   const { user } = useAuth0();
 
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(valueUser.user.id);
+  console.log(submitted)
   const [token, setToken] = useState(null);
   
   const [user1, setUser1] = useState({
@@ -26,34 +25,39 @@ export default function Register() {
       "https://lh3.googleusercontent.com/a-/AOh14GisXeDFX6_Ai8FdT-vj8_OE665Ff-VzYuC-OS_1uA=s96-c",
     sub: "google-oauth2|116863707328513454281asdasd",
   });
-  const updateBoth =()=>{
-    //value.dispatchCart({type:"UPDATE_TOKEN",payload:user.sub})
-    valueUser.setUser(user)}
-    const doNotThing=()=>{
-      console.log("token" +token)
-      
-    }
-    user ?  updateBoth(): doNotThing();
+  
     
     // user ? value.dispatchCart({type:"UPDATE_TOKEN",payload:user.sub}) : console.log("User-cart");
-    user1.email_verified ? valueUser.setUser(user1) : doNotThing();
+    
     const handleSubmit = (event) => {
       event.preventDefault();
-      signIn(user1, setToken, value.dispatchCart);
+  
       setUser1({ ...user1, email_verified: true })
       setSubmitted(true);
+      UserService.login(user1.email,user1.password).then(response => {
+        value.dispatchCart({type:"UPDATE_TOKEN",payload:{token:"ghjksdfjna12312aklf1jb3kj1b2jkn23n1j2n3k1jn23n1k2n3kj12hvh12iu3b12hjb3j1h"}})
+        console.log(response.data.cartItems)
+        setUser1(response)
+        valueUser.setUser(response.data);
+      })
+        
     };
     
     const handleChange = (event) => {
       setUser1({ ...user1, [event.target.name]: event.target.value });
     };
-    useEffect(()=>{user?value.dispatchCart({type:"UPDATE_TOKEN",payload:{token:user.sub}}):doNotThing()},[])
+    const handleLogout = (event) => {
+      valueUser.setUser({});
+      value.dispatchCart({type:"UPDATE_TOKEN",payload:{token:""}})
+      setSubmitted(false)
+    }
   return (
     <div className="login">
       
       {submitted ? (
         <div>
           <h1> Welcome</h1>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
         <div className="Register">
@@ -81,11 +85,9 @@ export default function Register() {
               required
             />
 
-            <button type="submit">Register</button>
+            <button type="submit">login</button>
           </form>
           <div>
-          {user1.email_verified ? null : <LoginAuth0Button />}
-          {user ? <LogoutAuth0Button user1={user1}setUser1={setUser1}/> : null}
         </div>
         </div>
       )}

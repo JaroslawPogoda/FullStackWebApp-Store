@@ -2,7 +2,7 @@
 .navigation{
     height: 100%;
     width: 100%;
-    background:#f1fff1;
+    background:rbg(222, 243, 254);
     display:flex;
     z-index: 3;
     
@@ -54,13 +54,13 @@
 }
  .navigation ul a.active li 
 {
-    transform: translateY(70%);
+    transform: translateY(40%);
     
     transition-duration: 390ms;
 }
 .navigation ul a.active li .icon-bar
 {
-    transform: scale(1.9);
+    transform: scale(1.5);
     
     transition-duration: 390ms;
 }
@@ -69,11 +69,11 @@
     height:100px;
     border-radius:50%;
     position: absolute;
-    background: rgb(241,255,241);
-    background: linear-gradient(90deg, rgba(241,255,241,1) 0%, rgba(199,212,200,1) 21%, rgba(199,212,200,1) 50%, rgba(204,218,205,1) 82%, rgba(241,255,241,1) 100%);
+    background: rgb(222, 243, 254);
+    background: linear-gradient(90deg, rgb(251, 251, 251) 0%, rgba(222, 243, 254,1) 21%, rgba(222, 243, 254,1) 50%, rgba(222, 243, 254,1) 82%, rgb(255, 255, 255) 100%);
     z-index:4 ;
     transition: all 300ms;
-    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+    box-shadow: rgba(137, 212, 255, 0.4) 0px 5px, rgba(253, 203, 235, 0.3) 0px 10px, rgba(180, 180, 180, 0.2) 0px 15px, rgba(255, 239, 249, 0.1) 0px 20px, rgba(250, 250, 250, 0.05) 0px 25px;
     margin-right:300px;
 }
 .navigation ul .indicator .indicator-block{
@@ -81,7 +81,7 @@
     height:50px;
     position: absolute;
     background: rgb(241,255,241);
-background: linear-gradient(90deg, rgba(241,255,241,1) 0%, rgba(199,212,200,1) 21%, rgba(199,212,200,1) 50%, rgba(204,218,205,1) 82%, rgba(241,255,241,1) 100%);
+background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(222, 243, 254,1) 21%, rgba(222, 243, 254,1) 50%, rgba(222, 243, 254,1) 82%, rgb(255, 255, 255) 100%);
     z-index:4 ;
 
 }
@@ -89,16 +89,16 @@ nav ul a:nth-child(1).active ~ .indicator{
     transform: translateX(calc(70px*0))
 }
 nav ul a:nth-child(2).active ~ .indicator{
-    transform: translateX(calc(80px*1))
+    transform: translateX(calc(72px*1))
 }
 nav ul a:nth-child(3).active ~ .indicator{
-    transform: translateX(calc(80px*2))
+    transform: translateX(calc(74px*2))
 }  
 nav ul a:nth-child(4).active ~ .indicator{
-    transform: translateX(calc(80px*3))
+    transform: translateX(calc(76px*3))
 }  
 nav ul a:nth-child(5).active ~ .indicator{
-    transform: translateX(calc(80px*4))
+    transform: translateX(calc(77px*4))
 }   
   
 

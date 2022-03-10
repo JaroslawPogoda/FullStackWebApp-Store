@@ -31,3 +31,12 @@
 .Categories {
     grid-area:category;
 }
+.addproduct{
+    font-size:50px;
+    right:50px
+}
+.addproduct-div {
+    right:50px;
+    position:absolute;
+    top:140px;
+}

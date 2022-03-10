@@ -11,3 +11,24 @@
     justify-content:center;
     align-items:center;
 }
+.UpdateUserForm{
+    display:flex;
+    flex-direction:column;
+    width: 100%;
+    align-items:center;
+    justify-content:center;
+}
+.profile-update{
+    position:absolute;
+    top: 300px;
+    transform: scale(1.9);
+    right: 90px;
+    transition: all 0.25s
+}
+.profile-update:hover{
+    position:absolute;
+    top: 300px;
+    transform: scale(2.2);
+    right: 90px;
+    transition: all 0.25s
+}

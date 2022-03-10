@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capstone.app.exception.InvalidLoginException;
 import com.capstone.app.exception.ResourceNotFoundException;
 import com.capstone.app.model.Product;
 import com.capstone.app.model.Users;
@@ -68,6 +69,12 @@ public class UserController {
 		}
 		Users u =users.get(0);
 		u.setName(user.getName());
+		u.setPicture(user.getPicture());
+		u.setCity(user.getCity());
+		u.setPhone(user.getPhone());
+		u.setHouseNumber(user.getHouseNumber());
+		u.setStreet(user.getStreet());
+		u.setZip(user.getZip());
 	    Users updatedUser=userRepo.save(u);
 	    return ResponseEntity.ok(updatedUser);
 	}
@@ -91,10 +98,38 @@ public class UserController {
 		{
 			System.out.println(new ResourceNotFoundException("Users(s) with the email "+ email +" not found"));
 		}
+		
 		Users u =users.get(0);
 		u.setCartItems(user.getCartItems());
 	    Users updatedUser=userRepo.save(u);
+	    for(int i =0;i<updatedUser.getCartItems().size();i++) {
+	    	System.out.println(updatedUser.getId());
+			System.out.println(updatedUser.getCartItems().get(i).getId());
+		}
 	    return ResponseEntity.ok(updatedUser.getCartItems());
 	}
-	
+	@PostMapping("/user/login/{email}")
+	public ResponseEntity<Users> login(@PathVariable String email,@RequestBody String password){
+		List <Users> users=userRepo.findByEmail(email);
+		if(users.isEmpty())
+		{
+			System.out.println(new ResourceNotFoundException("Users(s) with the email "+ email +" not found"));
+			
+		}
+		Users user = users.get(0);
+		
+		if(user.getPassword().equals(password.substring(0, password.length()-1))) {
+			return ResponseEntity.ok(user);
+		}
+		else {
+			
+			//loginerror("Login Invalid password does not match");
+			return null;
+		}
+		
+	}
+	public String loginerror(String error) {
+		return error;
+		
+	}
 }

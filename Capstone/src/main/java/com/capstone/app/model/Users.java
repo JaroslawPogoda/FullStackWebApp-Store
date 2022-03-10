@@ -25,6 +25,7 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String picture;
 	private String email;
 	private String password;
 	private String name;
@@ -58,8 +59,15 @@ public class Users {
 	
 
 
+	
+
+
+
+
+
 	/**
 	 * @param id
+	 * @param picture
 	 * @param email
 	 * @param password
 	 * @param name
@@ -71,10 +79,11 @@ public class Users {
 	 * @param phone
 	 * @param cartItems
 	 */
-	public Users(int id, String email, String password, String name, boolean admin, String city, String street,
-			String houseNumber, String zip, String phone, List<Product> cartItems) {
+	public Users(int id, String picture, String email, String password, String name, boolean admin, String city,
+			String street, String houseNumber, String zip, String phone, List<Product> cartItems) {
 		super();
 		this.id = id;
+		this.picture = picture;
 		this.email = email;
 		this.password = password;
 		this.name = name;
@@ -86,6 +95,12 @@ public class Users {
 		this.phone = phone;
 		this.cartItems = cartItems;
 	}
+
+
+
+
+
+
 
 
 
@@ -152,6 +167,14 @@ public class Users {
 		this.houseNumber = houseNumber;
 	}
 
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 
 	public String getZip() {
 		return zip;
@@ -190,6 +213,10 @@ public class Users {
 	public void addItemToCartItems(Product product) {
 		this.cartItems.add(product);
 	}
+
+
+
+
 
 
 }

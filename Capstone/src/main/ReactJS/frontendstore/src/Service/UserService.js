@@ -9,13 +9,14 @@ class UserService{
     }
 
     register(user){
-        console.log(USER_API_BASE_URL+"/register")
-return axios.post(USER_API_BASE_URL+"/register",user);
+        return axios.post(USER_API_BASE_URL+"/register",user);
     }
     updateUser(user,email){
         return axios.put(USER_API_BASE_URL+"/user/"+email,user);
     }
-
+    login(email, password){
+        return axios.post(USER_API_BASE_URL+"/user/login/"+email,password)
+    }
     deleteUser(email){
         return axios.delete(USER_API_BASE_URL+"/user/"+email);
     }

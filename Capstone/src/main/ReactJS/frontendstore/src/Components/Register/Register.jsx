@@ -1,7 +1,7 @@
 //@Objective: Register page
 //imports
 import React,{useState,useContext} from "react";
-import createUser from "../../functions/createUser";
+
 import './Register.css'
 import {CartStateContext} from '../Layout'
 import UserService from "../../Service/UserService";
@@ -94,11 +94,11 @@ export default function Register(props) {
         />
         <label htmlFor='zipcode'>Zip Code:</label>
         <input
-        id="zipcode"
-          type="zipcode"
-          name="zipcode"
+        id="zip"
+          type="zip"
+          name="zip"
           placeholder="Zip-code"
-          value={user.zipcode}
+          value={user.zip}
           onChange={handleChange}
           required
         />

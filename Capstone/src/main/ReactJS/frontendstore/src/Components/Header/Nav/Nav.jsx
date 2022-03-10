@@ -46,7 +46,7 @@ export default function Nav(props) {
             <span className="icon-bar">
               <SiGnuprivacyguard />
               </span>
-            <span className="text">register</span>
+            <span className="text">Register</span>
           </li>
         </NavLink>
         <NavLink to="login" className="navLink" >
@@ -54,7 +54,7 @@ export default function Nav(props) {
           <span className="icon-bar">
             <MdOutlineLogin/>
           </span>
-            <span className="text">login</span>
+            <span className="text">Login</span>
           </li>
         </NavLink>
         <NavLink to="profile" className="navLink" >

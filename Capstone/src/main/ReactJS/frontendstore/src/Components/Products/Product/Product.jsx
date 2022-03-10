@@ -1,10 +1,11 @@
 //@Objective : product component
 //import
-import React, {useState} from "react";
-import "./Product.css";
+import React, {useState} from "react"
+import "./Product.css"
 import styled from 'styled-components'
-import { ProdPopOut } from "./ProdPopOut/ProdPopOut";
-import { GlobalStyle } from "../../../globalStyle/globalStyled";
+import { ProdPopOut } from "./ProdPopOut/ProdPopOut"
+import { GlobalStyle } from "../../../globalStyle/globalStyled"
+import ProductService from "../../../Service/ProductService"
 //end of Imports
 //styled component Container
 const Container = styled.div`
@@ -17,7 +18,7 @@ width:37vw;
 margin-top:1%;
 padding:16px 32px;
 
-`;
+`
 //styled component productButton
 const ProductButton = styled.div`
 min-width:100px;
@@ -40,7 +41,7 @@ transition: 0.5s;
     transform:scale(1.06);
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
 }
-`;
+`
 
 //declaration of the component Product
 //@params props: product
@@ -51,6 +52,7 @@ export default function Product(props) {
   const openShowPopOut = () =>{
     setShowPopOut(!showPopOut)
   }
+  console.log(props.product)
   //retrun
   return (
 <Container>
@@ -61,14 +63,14 @@ export default function Product(props) {
       </h2>
       <img
         className={`product-img`}
-        src={props.product.image}
+        src={props.product.productImg}
         alt={props.product.productName}
       />
       <h3 className={`product-price`}>Price: ${props.product.price}</h3>
-    
+      
     </ProductButton>
-    <ProdPopOut showPopOut={showPopOut} setShowPopOut={setShowPopOut} product={props.product}/>
+    <ProdPopOut showPopOut={showPopOut} setShowPopOut={setShowPopOut} product={props.product} filterout={props.filterout} refreshProduct={props.refreshProduct}/>
     <GlobalStyle />
     </Container>
-  );//end of return
+  )//end of return
 }//end of declaration component

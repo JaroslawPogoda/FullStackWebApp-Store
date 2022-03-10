@@ -28,7 +28,7 @@ public class Product {
 	private String productImg;
 	private int quantity;
 	@ManyToOne
-    //@JoinColumn(name="cart_id", nullable=false)
+    @JoinColumn(name="id", nullable=false)
     private Users users;
 	/**
 	 * 

@@ -1,6 +1,11 @@
-import React,{ useState} from 'react'
-import ProductService from '../../Service/ProductService'
-
+import React, { useState } from "react";
+import ProductService from "../../Service/ProductService";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Paper from "@material-ui/core/Paper";
+import "./Addproduct.css"
+import Button from "@mui/material/Button";
+import {useNavigate} from "react-router-dom";
 // private int id;
 // 	private String productName;
 // 	private String productDescription;
@@ -8,78 +13,104 @@ import ProductService from '../../Service/ProductService'
 // 	private String category;
 // 	private String productImg;
 // 	private int quantity;
-function Addproduct() {
-    const[product, setProduct]= useState({
-        productName:"",
-        productDescription:"",
-        price: "",
-        category: "",
-        productImg: ""
-        })
-        const handleChange = (event) => {
-            setProduct({...product,[event.target.name]:event.target.value})
-        }
-        const handleSubmit = (event) => {
-            event.preventDefault()
-            console.log(product)
-            ProductService.addProduct(product);
-        }
+function Addproduct(props) {
+  const [product, setProduct] = useState({
+    productName: "",
+    productDescription: "",
+    price: "",
+    category: "",
+    productImg: "",
+  });
+  const handleChange = (event) => {
+    setProduct({ ...product, [event.target.name]: event.target.value });
+  };
+  let navigate=useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(product);
+    await ProductService.addProduct(product);
+    props.refreshProduct();
+   
+    navigate("../products")
+  };
+  const paperStyle = { padding: "20px 40px", width: "60vw", margin: "30px auto" };
   return (
-      
-    
-    <form className="ProductForm" onSubmit={handleSubmit}>
-          <label htmlFor='productName'>productName:</label>
-        <input
-        id="productName"
-          type="productName"
-          name="productName"
-          placeholder="productName"
-          value={product.productName}
-          onChange={handleChange}
-          required
-        />
-        <input
-        id="productDescription"
-          type="productDescription"
-          name="productDescription"
-          placeholder="productDescription"
-          value={product.productDescription}
-          onChange={handleChange}
-          required
-        />
-        <input
-        id="price"
-          type="price"
-          name="price"
-          placeholder="price"
-          value={product.price}
-          onChange={handleChange}
-          required
-        />
-        <input
-        id="category"
-          type="category"
-          name="category"
-          placeholder="category"
-          value={product.category}
-          onChange={handleChange}
-          required
-        />
-        <input
-        id="productImg"
-          type="productImg"
-          name="productImg"
-          placeholder="productImg"
-          value={product.productImg}
-          onChange={handleChange}
-          required
-        />
+    <Paper elevation={3} style={paperStyle}>
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": { m: 1, width: "100%" },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+          
+          <TextField
+            id="productName"
+            variant="standard"
+            label="Product Name"
+            type="productName"
+            name="productName"
+            placeholder="Product Name"
+            value={product.productName}
+            onChange={handleChange}
+            required
+          />
+          
+          <TextField
+            id="productDescription"
+            variant="standard"
+            label="Product Description"
+            type="productDescription"
+            name="productDescription"
+            placeholder="Product Description"
+            value={product.productDescription}
+            onChange={handleChange}
+            required
+          />
+          
+          <TextField
+            id="price"
+            variant="standard"
+            label="Product Price"
+            type="number"
+            name="price"
+            placeholder="Product Price"
+            value={product.price}
+            onChange={handleChange}
+            required
+          />
+          
+          <TextField
+            id="category"
+            variant="standard"
+            label="Product Category"
+            type="category"
+            name="category"
+            placeholder="Category"
+            value={product.category}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            id="productImg"
+            variant="standard"
+            label="Product Image"
+            type="productImg"
+            name="productImg"
+            placeholder="Product Image"
+            value={product.productImg}
+            onChange={handleChange}
+            required
+          />
 
-    
-        <button>Click me please like click me now!!!</button>
-    </form>
-  )
+<Button variant="contained" color="success" onClick={handleSubmit}>
+  Submit
+</Button>
+        
+      </Box>
+    </Paper>
+  );
 }
 
-
-export default Addproduct
+export default Addproduct;

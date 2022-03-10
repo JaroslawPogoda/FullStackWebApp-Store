@@ -1,7 +1,7 @@
 .product-title{
     width:14vw;
     grid-area:title;
-    font-size:1em;
+    font-size:20px;
 }
 .product-img{
     grid-area:img;
@@ -10,10 +10,11 @@
 }
 .product-price{
     grid-area:price;
+    font-size: 16px;
 }
 .product-price{
     display:flex;
 }
 .product-description{
-    font-size:12px;
+    font-size:14px;
 }
